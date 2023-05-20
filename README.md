@@ -24,11 +24,13 @@ This project is still under development and as such, the documentation and logic
 ### Authentication
 Authentication requires that access token be passed but the desired way to do this is to use the following logic.
 
+```
 res.cookie("ACCESS_TOKEN", JSON.stringify(accessToken), {
     secure: process.env.NODE_ENV !== "development",
     httpOnly: true,
     expires: dayjs().add(30, "days").toDate(),
 })
+```
 
 The code will be updated to reflect this as well as the auth middleware.
 
@@ -40,6 +42,6 @@ The code will be updated to reflect this as well as the auth middleware.
 
 
 ## Final Note
-Feel free to clone the code, make adjustments and even create PRs. 
+Feel free to clone the code, make adjustments and even create PRs.
 
 Long Live The Code. #LLTC.

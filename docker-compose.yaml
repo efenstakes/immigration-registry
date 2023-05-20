@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  server:
+    container_name: ImmigrationRegistry
+    restart: always
+    build: .
+    deploy:
+      restart_policy:
+        condition: on-failure
+      mode: replicated
+      replicas: 6
+    ports:
+      - '8080:8080'
+    links: 
+      - db
+    depends_on:
+      - db
+
+  db:
+    container_name: immigration_registry-db
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+      - immigration_registry-dbdata:/data/db
+
+volumes:
+    immigration_registry-dbdata:

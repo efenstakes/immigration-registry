@@ -4,26 +4,6 @@ import mongoose, { Schema } from 'mongoose'
 
 
 
-
-const requirementSchema = new Schema({
-    requirement: {
-        type: String,
-    },
-    status: {
-        type: String,
-        enum: [ 'PENDING', 'FAILED', 'SUCCEEDED',  ]
-    },
-    comments: {
-        type: String,
-    },
-    updatedOn: {
-        type: Date,
-    },
-    updatedBy: {
-        type: Schema.Types.ObjectId,
-        ref: 'Staff',
-    },
-})
 const immigrantSchema = new mongoose.Schema({
 
     // their name
@@ -73,12 +53,7 @@ const immigrantSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'RegistryCenter',
     },
-
-    requirements: {
-        type: [requirementSchema],
-        default: []
-    }
-
+    
 }, {
     collation: { locale: 'en_US', strength: 2 }
 })

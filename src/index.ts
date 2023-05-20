@@ -3,10 +3,15 @@ import express, { Express , Response, Request} from "express"
 import cors from 'cors'
 import * as dotenv from 'dotenv'
 import morgan from 'morgan'
+import { graphqlHTTP } from 'express-graphql'
 
 
 // db connection
 import { connectToDb } from "./utils/database"
+
+
+// schema
+import schema from './schema'
 
 
 // create express server
@@ -33,6 +38,11 @@ app.get("/", (req: Request, res: Response)=> {
     res.json({ page: 'index', status: 'running' })
 })
 
+// setup graqphql
+app.use(
+    '/q',
+    graphqlHTTP({ schema, graphiql: true })
+)
 
 
 const PORT = process.env.PORT || 8080

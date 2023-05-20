@@ -31,11 +31,6 @@ const staffSchema = new mongoose.Schema({
         index: true,
     },
     
-    isAdmin: {
-        type: Boolean,
-        default: false,
-    },
-
     role: {
         type: String,
         // RFS - reception facility supervisor

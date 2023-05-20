@@ -36,7 +36,7 @@ const staffSchema = new mongoose.Schema({
         // RFS - reception facility supervisor
         // RFF - reception facility staff
         // TRFS - temporary residence facility supervisor
-        // TRFF - reception facility supervisor
+        // TRFF - temporary residence facility staff
         enum: [ 'SUPERVISOR', 'ADMIN', 'RFS', 'RFF',, 'TRFS', 'TRFF', ]
     },
 

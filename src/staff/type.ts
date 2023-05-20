@@ -41,6 +41,14 @@ const StaffType = new GraphQLObjectType({
             type: GraphQLBoolean,
         },
         
+        accessToken: {
+            type: GraphQLString,
+        },
+        
+        refreshToken: {
+            type: GraphQLString,
+        },
+        
         addedOn: {
             type: GraphQLFloat,
         },

@@ -34,6 +34,11 @@ const residenceSchema = new Schema({
         default: Date.now()
     },
 
+    staffId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Staff',
+    }
+
 }, {
     collation: { locale: 'en_US', strength: 2 }
 })

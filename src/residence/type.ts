@@ -44,6 +44,10 @@ const ResidenceType = new GraphQLObjectType({
         addedOn: {
             type: GraphQLFloat,
         },
+
+        staffId: {
+            type: GraphQLID,
+        }
         
     })
 })

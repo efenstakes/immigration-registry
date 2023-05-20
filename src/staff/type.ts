@@ -2,6 +2,7 @@ import {
     GraphQLString,
     GraphQLID,
     GraphQLObjectType,
+    GraphQLFloat,
     GraphQLBoolean,
 } from 'graphql'
 
@@ -37,11 +38,11 @@ const StaffType = new GraphQLObjectType({
         },
         
         isActive: {
-            type: GraphQLString,
+            type: GraphQLBoolean,
         },
         
         addedOn: {
-            type: GraphQLBoolean,
+            type: GraphQLFloat,
         },
         
     })

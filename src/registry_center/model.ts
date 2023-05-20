@@ -29,6 +29,12 @@ const registryCenterSchema = new Schema({
         default: true,
     },
 
+    // staff that added it
+    staffId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Staff',
+    },
+
     addedOn: {
         type: Date,
         default: Date.now()

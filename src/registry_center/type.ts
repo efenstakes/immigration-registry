@@ -44,6 +44,10 @@ const RegistryCenterType = new GraphQLObjectType({
         addedOn: {
             type: GraphQLFloat,
         },
+
+        staffId: {
+            type: GraphQLID,
+        },
         
     })
 })

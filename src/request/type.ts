@@ -81,6 +81,10 @@ const RequestType = new GraphQLObjectType({
         addedOn: {
             type: GraphQLFloat,
         },
+
+        staffId: {
+            type: GraphQLID,
+        }
         
     })
 })

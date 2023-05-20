@@ -44,8 +44,16 @@ const ImmigrantType = new GraphQLObjectType({
             type: GraphQLString,
         },
 
+        entryDate: {
+            type: GraphQLFloat,
+        },
+
         centerOfRegistry: {
             type: GraphQLString,
+        },
+        
+        staffId: {
+            type: GraphQLID,
         },
         
     })

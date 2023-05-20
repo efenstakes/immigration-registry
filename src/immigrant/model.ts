@@ -54,10 +54,16 @@ const immigrantSchema = new mongoose.Schema({
         ref: 'RegistryCenter',
     },
     
+    // staff adding
+    staffId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Staff',
+    },
+    
 }, {
     collation: { locale: 'en_US', strength: 2 }
 })
 
 
-const ImmigrationModel = mongoose.model('Immigration', immigrantSchema)
-export default ImmigrationModel
+const ImmigrantModel = mongoose.model('Immigration', immigrantSchema)
+export default ImmigrantModel

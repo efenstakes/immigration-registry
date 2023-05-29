@@ -4,6 +4,7 @@ import { activateRegistryCenter, addRegistryCenter, deactivateRegistryCenter, ge
 import { addRequest, getRequestDetails, searchRequests } from './request/resolvers'
 import { activateResidence, addResidence, deactivateResidence, getResidenceDetails, searchResidence } from './residence/resolvers'
 import { activateStaff, addStaff, deactivateStaff, getStaffDetails, login } from './staff/resolvers'
+import { admitImmigrant, unAdmitImmigrant } from './residence_occupancy/resolvers'
 
 
 
@@ -23,6 +24,10 @@ const rootQuery = new GraphQLObjectType({
 
         getResidenceDetails,
         searchResidence,
+
+        // occupancy
+        admitImmigrant,
+        unAdmitImmigrant,
 
     })
 })

@@ -4,7 +4,10 @@ import {
     GraphQLObjectType,
     GraphQLBoolean,
     GraphQLFloat,
+    GraphQLList,
 } from 'graphql'
+import StaffModel from '../staff/model'
+import ResidenceOccupancyModel from '../residence_occupancy/model'
 
 
 // import models here
@@ -47,7 +50,14 @@ const ResidenceType = new GraphQLObjectType({
 
         staffId: {
             type: GraphQLID,
-        }
+        },
+
+        occupancy: {
+            type: new GraphQLList(require("../residence_occupancy/type")),
+            async resolve({ _id }, _args) {
+                return await ResidenceOccupancyModel.find({ residenceId: _id }).lean()
+            }
+        },
         
     })
 })

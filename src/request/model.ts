@@ -27,7 +27,7 @@ const requirementSchema = new Schema({
 })
 const RequestSchema = new mongoose.Schema({
 
-    immigrant: {
+    immigrantId: {
         type: Schema.Types.ObjectId,
         ref: 'Immigrant',
     },

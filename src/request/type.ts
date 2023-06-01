@@ -6,6 +6,8 @@ import {
     GraphQLFloat,
     GraphQLList,
 } from 'graphql'
+import ImmigrantModel from '../immigrant/model'
+import StaffModel from '../staff/model'
 
 
 // import models here
@@ -49,27 +51,23 @@ const RequestType = new GraphQLObjectType({
         _id: {
             type: GraphQLID
         },
-        
-        name: {
-            type: GraphQLString
-        },
-        
-        email: {
-            type: GraphQLString
-        },
-        
-        state: {
-            type: GraphQLString
-        },
-        
-        locality: {
-            type: GraphQLString,
-        },
-        
-        isActive: {
-            type: GraphQLBoolean,
+
+        immigrantId: {
+            type: GraphQLID,
         },
 
+        staffId: {
+            type: GraphQLID,
+        },
+        
+        grounds: {
+            type: GraphQLString
+        },
+        
+        comments: {
+            type: GraphQLString
+        },
+        
         requirements: {
             type: new GraphQLList(RequirementType),
         },
@@ -78,13 +76,23 @@ const RequestType = new GraphQLObjectType({
             type: GraphQLString,
         },
         
-        addedOn: {
+        filedOn: {
             type: GraphQLFloat,
         },
 
-        staffId: {
-            type: GraphQLID,
-        }
+        immigrant: {
+            type: new GraphQLList(require("../immigrant/type")),
+            async resolve({ immigrantId }, _args) {
+                return await ImmigrantModel.findById(immigrantId).lean()
+            }
+        },
+
+        staff: {
+            type: new GraphQLList(require("../staff/type")),
+            async resolve({ staffId }, _args) {
+                return await StaffModel.findById(staffId).lean()
+            }
+        },
         
     })
 })

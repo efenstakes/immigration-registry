@@ -10,7 +10,7 @@ import ResidenceType from "./type"
 export const addRequest = {
     type: RequestType,
     args: {
-        immigrant: {
+        immigrantId: {
             type: GraphQLString,
         },
         requirements: {
@@ -23,7 +23,7 @@ export const addRequest = {
             type: GraphQLString, 
         },
     },
-    async resolve(_context, { requirements, immigrant, grounds, comments }, { user }) {
+    async resolve(_context, { requirements, immigrantId, grounds, comments }, { user }) {
         if( !user || !user.isActive ) return new Error('401')
 
         // collect data
@@ -37,7 +37,7 @@ export const addRequest = {
             //     }
             // }),
             status: 'PENDING',
-            immigrant,
+            immigrantId,
             grounds,
             comments,
             staffId: user._id,
@@ -63,7 +63,7 @@ export const addRequest = {
 export const searchRequests = {
     type: new GraphQLList(RequestType),
     args: {
-        immigrant: {
+        immigrantId: {
             type: GraphQLString,
         },
         grounds: {
@@ -79,12 +79,12 @@ export const searchRequests = {
             type: GraphQLInt,
         },
     },
-    async resolve(_context, { immigrant, grounds, status, limit, offset }) {
+    async resolve(_context, { immigrantId, grounds, status, limit, offset }) {
 
         let query
 
-        if( immigrant ) {
-            query = await RequestModel.where({ immigrant })
+        if( immigrantId ) {
+            query = await RequestModel.where({ immigrantId })
         }
         if( grounds ) {
             query = await RequestModel.where({ grounds })
